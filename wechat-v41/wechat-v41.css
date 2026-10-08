@@ -5,3 +5,19 @@ html{touch-action:manipulation;-webkit-text-size-adjust:100%}button,[data-add],[
 /* WeChat WebView fallback */
 .outer{min-height:100vh;min-height:100dvh}.shell{min-height:calc(100vh - 48px);min-height:calc(100dvh - 48px)}
 @media(max-width:767px){.shell,.hero,.page{min-height:100vh;min-height:100dvh}.page.game,.page.build-page{height:100vh;height:100dvh}}
+
+/* mobile overflow hotfix: never hard-clip interactive content */
+@media(max-width:767px){
+  html,body,#app,.outer,.shell,.page,.hero{height:auto!important;min-height:100vh;min-height:100dvh;overflow:visible!important}
+  body{overflow-x:hidden!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch}
+  .page.game,.page.build-page{height:auto!important;min-height:100vh;min-height:100dvh;overflow:visible!important;padding-bottom:calc(78px + env(safe-area-inset-bottom))!important}
+  .page.game .event{max-height:none!important;overflow:visible!important}
+  .nav{position:sticky;bottom:0;z-index:12;margin-left:-16px;margin-right:-16px;padding:7px 16px calc(7px + env(safe-area-inset-bottom));background:#f3ead5eF;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .toast{position:fixed;bottom:calc(72px + env(safe-area-inset-bottom));pointer-events:none}
+  .route-cards,.build,.choices{padding-bottom:4px}
+  .route-card,.choices button,.page>button{min-height:44px}
+}
+@media(max-height:700px) and (max-width:767px){
+  .page{padding-top:12px!important}.chapter{margin-top:6px!important;margin-bottom:6px!important}
+  .event-art{height:68px!important}.attrs{margin:5px 0!important}.broadcast,.term-meter{margin:5px 0!important}
+}
